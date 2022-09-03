@@ -1,0 +1,53 @@
+#gameContainer{
+  width: 500px;
+  height: 730px;
+  border: 3px solid;
+  position: absolute;
+  
+}
+
+#sky{
+  position: absolute;
+  background-color: lightblue;
+  width: 500px;
+  height: 600px;
+}
+
+#ground{
+  position: absolute;
+  background-color: brown;
+  width: 500px;
+  height: 130px;
+  top:600px;
+  z-index: 1;
+}
+
+#bird{
+  position: absolute;
+  background-image:url(flappy-bird.png); 
+  width: 60px;
+  height: 45px;
+  border-radius: 15px;
+}
+.pipe{
+  background-image: url(flappybird-pipe.png);
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+.topPipe{
+  background-image: url(flappybird-pipe.png);
+  transform: rotate(180deg);
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+#scoreText{
+  z-index: 3;
+  position: relative;
+  text-align: center;
+  font-family: MV  Boli, Arial;
+  font-size: 60px;
+}
