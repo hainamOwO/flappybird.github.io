@@ -51,3 +51,17 @@
   font-family: MV  Boli, Arial;
   font-size: 60px;
 }
+
+#gameEndText,#res{
+  position: relative;
+  text-align: center;
+  font-size: 50px;
+  z-index: 2;
+  display: none;
+  font-family: MV Boli;
+  cursor: pointer;
+}
+
+#res:hover{
+  text-decoration: underline;
+}
