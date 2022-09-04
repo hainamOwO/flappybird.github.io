@@ -1,6 +1,15 @@
 const bird = document.getElementById("bird");
 const gameDisplay = document.getElementById("gameContainer");
 const scoreText = document.getElementById("scoreText");
+const jumpSound = new Audio();
+const hitSound = new Audio();
+const pointSound = new Audio();
+
+jumpSound.src = "Everything/sfx_wing.wav";
+hitSound.src = "Everything/sfx_hit.wav";
+pointSound.src = "Everything/sfx_point.wav";
+
+
 let score = 0;
 const gravity = 3;
 let birdLeft = 220;
@@ -12,6 +21,7 @@ generatePipe();
 let scoreTime = setInterval(()=>{
   score+=1;
   scoreText.textContent = score;
+  pointSound.play();
 },1900);
 
 
@@ -30,9 +40,10 @@ function startGame(){
 function jump(){
   if (birdBottom<690&&running){
     birdBottom += 55;
+    jumpSound.play();
   }
-    bird.style.bottom = birdBottom + 'px';
-   console.log(birdBottom);  
+  bird.style.bottom = birdBottom + 'px';
+    
 }
 
 function generatePipe(){
@@ -67,6 +78,7 @@ function generatePipe(){
     //game over
     if((pipeLeft > 200&& pipeLeft <273 &&birdLeft===220 && (birdBottom<pipeBottom + 300 || birdBottom>pipeBottom+gap-45 ) ||(birdBottom === 130))){
       gameOver();
+      
       clearInterval(scoreTime);
     }
   }
@@ -78,5 +90,9 @@ function generatePipe(){
 function gameOver(){
   clearInterval(GametimeId);
   running = false;
+  hitSound.play();
+  setTimeout(()=>{
+    hitSound.src="";
+  },500);
 }
 
