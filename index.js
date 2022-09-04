@@ -2,7 +2,7 @@ const bird = document.getElementById("bird");
 const gameDisplay = document.getElementById("gameContainer");
 const scoreText = document.getElementById("scoreText");
 let score = 0;
-const gravity = 2;
+const gravity = 3;
 let birdLeft = 220;
 let birdBottom = 250;
 let running = false;
@@ -12,11 +12,10 @@ generatePipe();
 let scoreTime = setInterval(()=>{
   score+=1;
   scoreText.textContent = score;
-},3000);
+},1900);
 
 
 window.addEventListener("click",jump);
-window.addEventListener("keydown",restart);
 
 let GametimeId = setInterval(startGame,20);
 
@@ -30,14 +29,14 @@ function startGame(){
 
 function jump(){
   if (birdBottom<690&&running){
-    birdBottom += 50;
+    birdBottom += 55;
   }
     bird.style.bottom = birdBottom + 'px';
    console.log(birdBottom);  
 }
 
 function generatePipe(){
-  let pipeLeft = 500;
+  let pipeLeft = 450;
   let randomHeight = Math.random()*100;
   let pipeBottom = randomHeight;
   const pipe = document.createElement('div');
@@ -66,14 +65,14 @@ function generatePipe(){
     }
     }  
     //game over
-    if((pipeLeft > 200&& pipeLeft <273 &&birdLeft===220 && (birdBottom<pipeBottom + 300 || birdBottom>pipeBottom+gap-55 ) ||(birdBottom === 130))){
+    if((pipeLeft > 200&& pipeLeft <273 &&birdLeft===220 && (birdBottom<pipeBottom + 300 || birdBottom>pipeBottom+gap-45 ) ||(birdBottom === 130))){
       gameOver();
       clearInterval(scoreTime);
     }
   }
 
   let timeId = setInterval(movePipe,20);
-  if(running) setTimeout(generatePipe, 3000);//generate pipes
+  if(running) setTimeout(generatePipe, 1900);//generate pipes
 }
 
 function gameOver(){
@@ -81,10 +80,3 @@ function gameOver(){
   running = false;
 }
 
-function restart(event){
-  if(event.keycode === 32){
-    score = 0;
-    running = true;
-    startGame();
-  }
-}

@@ -8,14 +8,14 @@
 
 #sky{
   position: absolute;
-  background-color: lightblue;
+  background-image: url(sky.png);
   width: 500px;
   height: 600px;
 }
 
 #ground{
   position: absolute;
-  background-color: brown;
+  background-image:url(ground.png) ;
   width: 500px;
   height: 130px;
   top:600px;
